@@ -79,7 +79,8 @@ return { -- Autocompletion
         ['<C-j>'] = cmp.mapping.select_next_item(),       -- Select the [n]ext item
         ['<C-k>'] = cmp.mapping.select_prev_item(),       -- Select the [p]revious item
      --   ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept the completion with Enter.
-        ['<C-c>'] = cmp.mapping.complete {},              -- Manually trigger a completion from nvim-cmp.
+        ['<C-c>'] = cmp.mapping.complete {}, -- Manually trigger a completion from nvim-cmp.
+        ['<C-e>'] = cmp.mapping.abort(), -- cancel suggestion box on ctrl + e
 
         ['<C-l>'] = cmp.mapping(function()
           if luasnip.expand_or_locally_jumpable() then
@@ -92,7 +93,39 @@ return { -- Autocompletion
           end
         end, { 'i', 's' }),
 
-        -- <Tab>: first press confirms, next press goes to next item
+        -- arrows dont work in going through the menu
+
+        -- Make arrow keys behave normally in insert mode and close suggestions
+        ['<Up>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.abort()  -- close the suggestion box
+          end
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Up>', true, true, true), 'n', true)
+        end, { 'i' }),
+        
+        ['<Down>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.abort()  -- close the suggestion box
+          end
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Down>', true, true, true), 'n', true)
+        end, { 'i' }),
+
+        ['<Left>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.abort()
+          end
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Left>', true, true, true), 'n', true)
+        end, { 'i' }),
+        
+        ['<Right>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.abort()
+          end
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Right>', true, true, true), 'n', true)
+        end, { 'i' }),
+
+
+               -- <Tab>: first press confirms, next press goes to next item
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             if not just_confirmed then
