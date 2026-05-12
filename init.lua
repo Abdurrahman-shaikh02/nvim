@@ -25,19 +25,18 @@ require('lazy').setup({
 --    "MunifTanjim/nui.nvim",
 --    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode`
 --  },
---require 'plugins.neotree',
---require 'plugins.bufferline',
---require 'plugins.lualine',
+require 'plugins.neotree',
+require 'plugins.bufferline',
+require 'plugins.lualine',
 require 'plugins.treesitter',
---require 'plugins.telescope',
---require 'plugins.lsp',
---require 'plugins.autocompletion',
---require 'plugins.gitsigns',
---require 'plugins.alpha',
---require 'plugins.indent-blankline',
---require 'plugins.misc',
---require 'plugins.autoformatting'
---require 'plugins.moonfly'
+require 'plugins.telescope',
+require 'plugins.lsp',
+require 'plugins.autocompletion',
+require 'plugins.gitsigns',
+require 'plugins.alpha',
+require 'plugins.indent-blankline',
+require 'plugins.misc',
+require 'plugins.colortheme(moonfly)'
 
 
 
