@@ -36,7 +36,9 @@ require 'plugins.gitsigns',
 require 'plugins.alpha',
 require 'plugins.indent-blankline',
 require 'plugins.misc',
-require 'plugins.colortheme(moonfly)'
+require 'plugins.colortheme(moonfly)',
+require 'plugins.noice',
+require 'plugins.todo-comments'
 
 
 
